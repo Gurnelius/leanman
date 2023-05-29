@@ -1,0 +1,46 @@
+<!-- hashtag_list.html -->
+{% extends 'home/base.html' %}
+
+{% block content %}
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-md-3">
+                <!-- Vertical Navbar -->
+                <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+                    <ul class="navbar-nav flex-column">
+                        {% for hashtag in hashtags %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'hashtags' hashtag %}">#{{ hashtag }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-md-9">
+                <!-- Tweets -->
+                <div class="overflow-auto">
+                    <div class="container mt-4">
+                        <div class="row">
+                            {% for tweet in tweets %}
+                                <div class="col-md-6">
+                                    <div class="card mb-4">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ tweet.full_text }}</h5>
+                                            <p class="card-text">
+                                                Retweets: {{ tweet.retweet_count }}
+                                                Favorites: {{ tweet.favorite_count }}
+                                                Date: {{ tweet.created_at }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% empty %}
+                                <li class="list-group-item">Select #Hashtag</li>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

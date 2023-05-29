@@ -1,0 +1,13 @@
+<!-- word_cloud.html -->
+{% extends 'home/base.html' %}
+{% load static %}
+
+<!-- In your base.html template -->
+  
+{% block content %}
+    <div class="container">
+        <h1>{{ header|title }}</h1>
+        
+        <img src="{% static 'images/wordcloud.png' %}" alt="Word Cloud">
+    </div>
+{% endblock %}
